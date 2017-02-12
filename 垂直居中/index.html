@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>垂直居中</title>
+	<style>
+		*{
+			padding:0px;
+			margin:0;
+		}
+		h3{
+			margin:10px 0;
+		}
+		pre:before {
+		    content: attr(data-type);
+		    position: absolute;
+		    font-size: 12px;
+		    top: -30px;
+		    left: 0;
+		    font-family: "proxima-nova";
+		    font-weight: 400;
+		    display: inline-block;
+		    padding: 2px 5px;
+		    border-radius: 5px;
+		    background-color: #ebebeb;
+		}
+		pre{
+			box-sizing:border-box;
+			padding: 20px 25px;
+    		background: #f8f5f0;
+    		color: #8a785d;
+		    font-size: 12px;
+		    line-height: 18px;
+		    border-radius: 5px;
+    		box-shadow: inset 0 2px 2px rgba(180,157,125,.15), inset 0 0 1px rgba(0,0,0,.2);
+    		width:500px;
+    		margin-bottom:10px;
+		}
+		.main{
+			margin:0 auto;
+			width: 1000px
+		}
+		.block{
+			clear: both;
+			overflow: hidden;
+			margin: 0 auto;
+    		width: 500px;
+		}
+		.out_box{
+			background:black;
+			width: 100px;
+			height: 100px;
+		}
+		.in_box{
+			background:white;
+			width: 10px;
+			height: 10px;
+			margin:0 auto;
+		}
+		.position_relative{
+			position:relative; 
+		}
+		.position_absolute{
+			position: absolute;
+			margin:auto;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+		.table{
+			display: table;
+		}
+		.table-cell{
+			display: table-cell;
+			vertical-align: middle;
+		}
+		.translate{
+			margin: auto;  
+			position: absolute;  
+			top: 50%; left: 50%;  
+			transform:translate(-50%,-50%);
+		}
+		.flex{
+			display: flex;
+		    justify-content:center;
+		    align-items:Center;
+		}
+		.inline-block{
+			text-align: center;
+		}
+		.inline-block .in_box{
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.inline-block:after{
+			content:'';
+		    width:0;
+		    height:100%;
+		    display:inline-block;
+		    vertical-align:middle;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="block">
+			<h3>1.绝对定位</h3>
+			<pre data-type="html"><code>.position_relative{
+    position:relative; 
+}
+.position_absolute{
+    position: absolute;
+    margin:auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+&lt;div class="out_box position_relative"&gt;
+    &lt;div class="in_box position_absolute"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+			<div class="out_box position_relative">
+				<div class="in_box position_absolute"></div>
+			</div>
+		</div>
+		<div class="block">
+			<h3>2.display:table-cell</h3>
+			<pre data-type="html"><code>.table{
+    display: table;
+}
+.table-cell{
+    display: table-cell;
+    vertical-align: middle;
+}
+&lt;div class="out_box table"&gt;
+    &lt;div class="table-cell"&gt;
+        &lt;div class="in_box"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+			<div class="out_box table">
+				<div class="table-cell">
+					<div class="in_box"></div>
+				</div>
+			</div>
+		</div>
+		<div class="block">
+			<h3>3.translate</h3>
+			<pre data-type="html"><code>.translate{
+    margin: auto;  
+    position: absolute;  
+    top: 50%; 
+    left: 50%;  
+    transform:translate(-50%,-50%);
+}
+&lt;div class="out_box position_relative"&gt;
+    &lt;div class="in_box translate"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+			<div class="out_box position_relative">
+				<div class="in_box translate">
+				</div>
+			</div>
+		</div>
+		<div class="block">
+			<h3>4.display:flex</h3>
+			<pre data-type="html"><code>.flex{
+    display: flex;
+    justify-content:center;
+    align-items:Center;
+}
+&lt;div class="out_box flex"&gt;
+    &lt;div class="in_box"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+			<div class="out_box flex">
+				<div class="in_box"></div>
+			</div>
+		</div>
+		<div class="block">
+			<h3>5.display:inline-block</h3>
+			<pre data-type="html"><code>.inline-block{
+    text-align: center;
+}
+.inline-block .in_box{
+    display: inline-block;
+    vertical-align: middle;
+}
+.inline-block:after{
+    content:'';
+    width:0;
+    height:100%;
+    display:inline-block;
+    vertical-align:middle;
+}
+&lt;div class="out_box inline-block"&gt;
+    &lt;div class="in_box"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+			<div class="out_box inline-block">
+				<div class="in_box"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
