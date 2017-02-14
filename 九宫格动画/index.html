@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			padding:0;
+			margin:0;
+		}
+		pre:before {
+			content: attr(data-type);
+			position: absolute;
+			font-size: 12px;
+			top: -30px;
+			left: 0;
+			font-family: "proxima-nova";
+			font-weight: 400;
+			display: inline-block;
+			padding: 2px 5px;
+			border-radius: 5px;
+			background-color: #ebebeb;
+		}
+		.pre{
+			float: left;
+			margin-right:10px;
+		}
+		.pre h3{
+			margin:10px 0;
+		}
+		pre{
+			box-sizing:border-box;
+			padding: 20px 25px;
+			background: #272822;
+			color: #66d9ef;
+			font-size: 12px;
+			line-height: 18px;
+			border-radius: 5px;
+			box-shadow: inset 0 2px 2px rgba(180,157,125,.15), inset 0 0 1px rgba(0,0,0,.2);
+			width: 300px;
+			float: left;
+		}
+		.pre.big pre{
+			width: 920px;
+		}
+		pre .note{
+			color:#75715e;
+		}
+		.pre-box{
+			width: 930px;
+			margin:0 auto;
+			overflow: hidden;
+		}
+		.animate-box{
+			position: relative;
+			width: 400px;
+			height: 400px;
+			overflow: hidden;
+			background-color: #ccc;
+			margin: 10px auto;
+		}
+		.button-box{
+			text-align: center;
+			margin-top:10px;
+		}
+		div.block.animateStart{
+			animation-play-state:running;
+		}
+		div.block {
+			position: absolute;
+		    width: 10px;
+		    height: 10px;
+		    background-color: #555;
+		    -webkit-transform: rotate(90deg);/* 旋转90° */
+		    transform: rotate(90deg);/* 旋转90° */
+			animation-iteration-count: infinite;/* 动画执行次数-无限循环 */
+			animation-timing-function: ease-out;/* 动画的速度曲线-动画以低速结束 */
+			animation-duration: 2s;/* 动画执行周期-2s */
+			animation-play-state: paused; 
+		}
+		.block-1 {
+			left: calc(200px - 10px * 1.5);
+			top: calc(200px - 10px * 1.5);
+			animation: block1 1s;
+		}
+		.block-2 {
+			left: calc(200px - 10px/2);
+			top: calc(200px - 10px * 1.5);
+			animation: block2 1s;
+		}
+		.block-3 {
+			left: calc(200px - 10px/-2);
+			top: calc(200px - 10px * 1.5);
+			animation: block3 1s;
+		}
+		.block-4 {
+			left: calc(200px - 10px * 1.5);
+			top: calc(200px - 10px/2);
+			animation: block4 1s;
+		}
+		.block-5 {
+			left: calc(200px - 10px / 2);
+			top: calc(200px - 10px / 2);
+			animation: block5 1s;
+		}
+		.block-6 {
+			left: calc(200px - 10px/-2);
+			top: calc(200px - 10px/2);
+			animation: block6 1s;
+		}
+		.block-7 {
+			left: calc(200px - 10px * 1.5);
+			top: calc(200px - 10px/-2);
+			animation: block7 1s;
+		}
+		.block-8 {
+			left: calc(200px - 10px/2);
+			top: calc(200px - 10px/-2);
+			animation: block8 1s;
+		}
+		.block-9 {
+			left: calc(200px - 10px/-2);
+			top: calc(200px - 10px/-2);
+			animation: block9 1s;
+		}
+		@keyframes block1 {
+			/* 初始状态：放大3倍 从左上角到中间 */
+			from {
+				left: calc(-10px * 1.5);
+				top: calc(-10px * 1.5);
+				transform: scale(3);
+			}
+		}
+		@keyframes block2 {
+			/* 初始状态：放大3倍 从顶部到中间 */
+			from {
+				left: calc(200px - 10px/2);
+				top: calc(-10px * 1.5);
+				transform: scale(3);
+			}
+		}
+		@keyframes block3 {
+			/* 初始状态：放大3倍 从右上角到中间 */
+			from {
+				left: calc(400px + 10px/2);
+				top: calc(-10px * 1.5);
+				transform: scale(3);
+			}
+		}
+		@keyframes block4 {
+			/* 初始状态：放大3倍 从左边到中间 */
+			from {
+				left: calc(-10px * 1.5);
+				top: calc(200px - 10px/2);
+				transform: scale(3);
+			}
+		}
+		@keyframes block5 {
+			/* 初始状态：放大3倍 */
+			from {
+				transform: scale(3);
+			}
+		}
+		@keyframes block6 {
+			/* 初始状态：放大3倍 从右边到中间 */
+			from {
+				left: calc(400px + 10px/2);
+				top: calc(200px - 10px/2);
+				transform: scale(3);
+			}
+		}
+		@keyframes block7 {
+			/* 初始状态：放大3倍 从左下角到中间 */
+			from {
+				left: calc(-10px * 1.5);
+				top: calc(400px + 10px/2);
+				transform: scale(3);
+			}
+		}
+		@keyframes block8 {
+			/* 初始状态：放大3倍 从底部到中间 */
+			from {
+				left: calc(200px - 10px/2);
+				top: calc(400px + 10px/2);
+				transform: scale(3);
+			}
+		}
+		@keyframes block9 {
+			/* 初始状态：放大3倍 从右下角到中间 */
+			from {
+				left: calc(400px + 10px/2);
+				top: calc(400px + 10px/2);
+				transform: scale(3);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class='pre-box'>
+			<div class="pre big">
+				<h3>默认样式</h3>
+				<pre><code>div.block{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #555;
+    -webkit-transform: rotate(90deg);<span class="note">/* 旋转90° */</span>
+    transform: rotate(90deg);<span class="note">/* 旋转90° */</span>
+    animation-iteration-count: infinite;<span class="note">/* 动画执行次数-无限循环 */</span>
+    animation-timing-function: ease-out;<span class="note">/* 动画的速度曲线-动画以低速结束 */</span>
+    animation-duration: 2s;<span class="note">/* 动画执行周期-2s */</span>
+    animation-play-state: paused; 
+}</code></pre>
+			</div>
+			<div class="pre">
+				<h3>1.左上角</h3>
+				<pre><code>.block-1 {
+    left: calc(200px - 10px * 1.5);
+    top: calc(200px - 10px * 1.5);
+    animation: block1 1s;
+}
+@keyframes block1 {
+    <span class="note">/* 初始状态：放大3倍 从左上角到中间 */</span>
+    from {
+        left: calc(-10px * 1.5);
+        top: calc(-10px * 1.5);
+        transform: scale(3);
+    }
+}</code></pre>
+			</div>
+			<div class="pre">
+				<h3>2.顶部</h3>
+				<pre><code>.block-2 {
+    left: calc(200px - 10px/2);
+    top: calc(200px - 10px * 1.5);
+    animation: block2 1s;
+}
+@keyframes block2 {
+    <span class="note">/* 初始状态：放大3倍 从顶部到中间 */</span>
+    from {
+        left: calc(200px - 10px/2);
+        top: calc(-10px * 1.5);
+        transform: scale(3);
+    }
+}</code></pre>
+			</div>
+			<div class="pre">
+				<h3>3.右上角</h3>
+				<pre><code>.block-3 {
+    left: calc(200px - 10px/-2);
+    top: calc(200px - 10px * 1.5);
+    animation: block3 1s;
+}
+@keyframes block3 {
+    <span class="note">/* 初始状态：放大3倍 从右上角到中间 */</span>
+    from {
+	    left: calc(400px + 10px/2);
+	    top: calc(-10px * 1.5);
+	    transform: scale(3);
+    }
+}</code></pre>
+			</div>
+			<div class="pre">
+				<h3>4.左边</h3>
+				<pre><code>.block-4 {
+    left: calc(200px - 10px * 1.5);
+    top: calc(200px - 10px/2);
+    animation: block4 1s;
+}
+@keyframes block4 {
+    <span class="note">/* 初始状态：放大3倍 从左边到中间 */</span>
+    from {
+        left: calc(-10px * 1.5);
+        top: calc(200px - 10px/2);
+        transform: scale(3);
+    }
+}</code></pre>
+			</div>
+			<div class="pre">
+				<h3>5.中间</h3>
+				<pre><code>.block-5 {
+    left: calc(200px - 10px / 2);
+    top: calc(200px - 10px / 2);
+    animation: block5 1s;
+}
+@keyframes block5 {
+    <span class="note">/* 初始状态：放大3倍 */</span>
+    from {
+        transform: scale(3);
+    }
+}</code></pre>
+			</div>
+			<div class="pre">
+				<h3>6.右边</h3>
+				<pre><code>.block-6 {
+    left: calc(200px - 10px/-2);
+    top: calc(200px - 10px/2);
+    animation: block6 1s;
+}
+@keyframes block6 {
+    <span class="note">/* 初始状态：放大3倍 从右边到中间 */</span>
+    from {
+        left: calc(400px + 10px/2);
+        top: calc(200px - 10px/2);
+        transform: scale(3);
+    }
+}</code></pre>
+			</div>
+			<div class="pre">
+				<h3>7.左下角</h3>
+				<pre><code>.block-7 {
+    left: calc(200px - 10px * 1.5);
+    top: calc(200px - 10px/-2);
+    animation: block7 1s;
+}
+@keyframes block7 {
+    <span class="note">/* 初始状态：放大3倍 从左下角到中间 */</span>
+    from {
+        left: calc(-10px * 1.5);
+        top: calc(400px + 10px/2);
+        transform: scale(3);
+    }
+}</code></pre>
+			</div>
+			<div class="pre">
+				<h3>8.底部</h3>
+				<pre><code>.block-8 {
+    left: calc(200px - 10px/2);
+    top: calc(200px - 10px/-2);
+    animation: block8 1s;
+}
+@keyframes block8 {
+    <span class="note">/* 初始状态：放大3倍 从底部到中间 */</span>
+    from {
+        left: calc(200px - 10px/2);
+        top: calc(400px + 10px/2);
+        transform: scale(3);
+    }
+}</code></pre>
+			</div>
+			<div class="pre">
+				<h3>9.右下角</h3>
+				<pre><code>.block-9 {
+    left: calc(200px - 10px/-2);
+    top: calc(200px - 10px/-2);
+    animation: block9 1s;
+}
+@keyframes block9 {
+    <span class="note">/* 初始状态：放大3倍 从右下角到中间 */</span>
+    from {
+        left: calc(400px + 10px/2);
+        top: calc(400px + 10px/2);
+        transform: scale(3);
+    }
+}</code></pre>
+			</div>
+		</div>
+		<div class="animate-box">
+			<div class="block block-1"></div>
+			<div class="block block-2"></div>
+			<div class="block block-3"></div>
+			<div class="block block-4"></div>
+			<div class="block block-5"></div>
+			<div class="block block-6"></div>
+			<div class="block block-7"></div>
+			<div class="block block-8"></div>
+			<div class="block block-9"></div>
+		</div>
+		<div class="button-box">
+			<button class="start">start</button>
+			<button class="stop">stop</button>
+		</div>
+	</div>
+	<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.2/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.start').on('click',function(){
+				$('div.block').addClass('animateStart')
+			})
+			$('.stop').on('click',function(){
+				$('div.block').removeClass('animateStart')
+			})
+		})
+	</script>
+</body>
+</html>
